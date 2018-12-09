@@ -1,22 +1,25 @@
 let width = 464;
 let height = 317;
+let img;
+let pixelD;
+let halfImage;
 
 function setup() {
-    createCanvas(width, height);
-    pixelDensity(1);
+    createCanvas(width, height * 2);
+    background(0);
+    img = loadImage("../img/monet.jpg");
+    pixelD = pixelDensity();
+    halfImage = 4 * (width  * pixelD) * (height * pixelD);
 }
 
 function draw() {
-    background(22);
+    image(img, 0, 0, width, height);
     loadPixels();
-    for (let x = 0; x < 464; x++) {
-        for (let y = 0; y < 317; y++) {
-            let index = (x + y * width)*4;
-            pixels[index] = random(0, 255);
-            pixels[index+1] = random(0, 255);
-            pixels[index+2] = random(0, 255);
-            pixels[index+3] = random(0, 255);
-        }
+    for (let i = 0; i < halfImage; i += 4) {
+        pixels[i + halfImage] = pixels[i]
+        pixels[i + halfImage + 1] = pixels[i + 1]
+        pixels[i + halfImage + 2] = pixels[i + 2]
+        pixels[i + halfImage + 3] = pixels[i + 3]
     }
     updatePixels();
 }
