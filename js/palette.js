@@ -4,13 +4,15 @@ let img;
 let pixelD;
 let halfImage;
 let allPixels;
+let imgWidth;
+let imgHeight;
 
 function preload() {
     img = loadImage("img/monet.jpg");
 }
 
 function setup() {
-    createCanvas(width, height * 2);
+    setCanvasSize();
     background(0);
     pixelD = pixelDensity();
     halfImage = 4 * (width  * pixelD) * (height * pixelD);
@@ -29,4 +31,10 @@ function draw() {
         allPixels.push([pixels[i + halfImage], pixels[i + halfImage + 1], pixels[i + halfImage + 2], pixels[i + halfImage + 3]]);
     }
     updatePixels();
+}
+
+function setCanvasSize() {
+    imgWidth = img.width;
+    imgHeight = img.height;
+    createCanvas(imgWidth, imgHeight * 2);
 }
