@@ -9,7 +9,7 @@ let totalPixels;
 let popularityBlocks;
 
 function preload() {
-    img = loadImage("img/vangogh.jpg");
+    img = loadImage("img/monet.jpg");
 }
 
 function setup() {
@@ -27,8 +27,8 @@ function setup() {
 function draw() {
     image(img, 0, 0);
     loadPixels();
-    uniformQuantization();
-//    popularityQuantization();
+//    uniformQuantization();
+    popularityQuantization();
 }
 
 function popularityQuantization() {
@@ -88,7 +88,7 @@ function bubbleSortPopularity() {
 function drawPopularityPalette() {
     let currentWidth = 0;
     let counter = 0;
-    for (let i = popularityBlocks.length - 1; i > popularityBlocks.length - 9; i--) {
+    for (let i = popularityBlocks.length - 1; i > popularityBlocks.length - 2; i--) {
         console.log(popularityBlocks[i][0], popularityBlocks[i][1], popularityBlocks[i][2]);
         fill(popularityBlocks[i][0], popularityBlocks[i][1], popularityBlocks[i][2]);
         rect(20 * counter, height + 5, 20, 20);
