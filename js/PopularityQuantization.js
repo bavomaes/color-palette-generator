@@ -49,9 +49,7 @@ class PopularityQuantization {
     calculateColorBlockAverage() {
         for (let i = 0; i < this.colorBlocks.length; i++) {
             if (this.colorBlocks[i].length > 0) {
-                let r = 0;
-                let g = 0;
-                let b = 0;
+                let r = 0, g = 0, b = 0;
                 for (let j = 0; j < this.colorBlocks[i].length; j++) {
                     r = r + this.colorBlocks[i][j][0];
                     g = g + this.colorBlocks[i][j][1];
