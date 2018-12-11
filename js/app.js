@@ -1,4 +1,5 @@
 let palette1;
+let palette2;
 let width;
 let height;
 let pixelD;
@@ -20,10 +21,7 @@ function setup() {
 function draw() {
     image(img, 0, 0);
     loadPixels();
-    let uniform = new UniformQuantization(pixels, width, height, pixelD);
-    let popularity = new PopularityQuantization(pixels, width, height, pixelD, paletteSize);
-    palette1 = uniform.getPalette();
-    palette2 = popularity.getPalette();
+    getPalettes();
     drawPalettes();
 }
 
@@ -31,6 +29,13 @@ function setCanvasSize() {
     width = img.width;
     height = img.height;
     createCanvas(width, height + 50);
+}
+
+function getPalettes() {
+    let uniform = new UniformQuantization(pixels, width, height, pixelD);
+    let popularity = new PopularityQuantization(pixels, width, height, pixelD, paletteSize);
+    palette1 = uniform.getPalette();
+    palette2 = popularity.getPalette();
 }
 
 function drawPalettes() {
