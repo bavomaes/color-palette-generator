@@ -3,7 +3,7 @@
 *
 * This algorithm uses Popularity Uniform Quantization to divide the 3D RGB Color space into 512 segments.
 * It then places the RGB value of each pixel into one of these 512 segments.
-* The segments are then sorted with using a bubble sort algorithm to define which have the most RGB values stored in them. Only the most popular segments will be chosen.
+* The segments are then sorted using a bubble sort algorithm to define which have the most RGB values stored in them. Only the most popular segments will be chosen.
 * The average of all RGB values per segment is then calculated and returned.
 *
 * This algorithm is based on a brief explanation of Popularity Uniform Quantization into 262,144 color segements.
@@ -88,7 +88,6 @@ class PopularityQuantization {
     }
     
     createPalette() {
-        let counter = 0;
         for (let i = this.avarageColorBlocks.length - 1; i > this.avarageColorBlocks.length - (this.paletteAmount + 1); i--) {
             this.palette.push([this.avarageColorBlocks[i][0], this.avarageColorBlocks[i][1], this.avarageColorBlocks[i][2]]);
         }
