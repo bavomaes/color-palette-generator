@@ -10,14 +10,15 @@ class UniformQuantization {
     }
     
     getPalette() {
-        this.calculateColorBlocks();
+        this.calculateColorBlocksSize();
         this.setColorBlocks();
         this.sortInColorBlocks();
         this.calculateColorBlockAverage();
+        this.bubbleSortUniformColorBlocks();
         return this.palette;
     }
     
-    calculateColorBlocks() {
+    calculateColorBlocksSize() {
         for (let i = 0; i < 8; i++) {
             this.colorBlocks.push([]);
         }
@@ -54,6 +55,18 @@ class UniformQuantization {
                 g = Math.floor(g / this.colorBlocks[i].length);
                 b = Math.floor(b / this.colorBlocks[i].length);
                 this.palette.push([r, g, b, this.colorBlocks[i].length]);
+            }
+        }
+    }
+    
+    bubbleSortUniformColorBlocks() {
+        for (let i = this.palette.length - 1; i >= 0; i--) {
+            for (let j = 1; j <= i; j++) {
+                if (this.colorBlocks[j - 1].length > this.colorBlocks[j].length) {
+                    let temp = this.palette[j - 1];
+                    this.palette[j - 1] = this.palette[j];
+                    this.palette[j] = temp;
+                }
             }
         }
     }

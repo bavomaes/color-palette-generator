@@ -13,14 +13,14 @@ class PopularityQuantization {
     }
     
     getPalette() {
-        this.calculateColorBlocks();
+        this.calculateColorBlocksSize();
         this.setColorBlocks();
         this.calculateColorBlockAverage();
         this.bubbleSortAvarageColorBlocks();
         return this.createPalette();
     }
     
-    calculateColorBlocks() {
+    calculateColorBlocksSize() {
         let colorSpace = 256 * 256 * 256;
         let colorGroups = colorSpace / Math.pow(this.resolution, 3);
         for (let i = 0; i < colorGroups; i++) {
