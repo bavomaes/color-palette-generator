@@ -1,3 +1,14 @@
+/*
+* Author: Bavo Maes
+*
+* This algorithm uses Uniform Quantization to divide the 3D RGB Color space into 8 segments.
+* It then places the RGB value of each pixel into one of these 8 segments.
+* The average of all RGB values per segment is then calculated and returned.
+*
+* This algorithm is based on a brief explanation of Uniform Quantization into 256 color segements.
+* The explanation can be found here: https://web.cs.wpi.edu/~matt/courses/cs563/talks/color_quant/CQindex.html
+*/
+
 class UniformQuantization {
     constructor(imgPixels, imgWidth, imgHeight, pixelDens) {
         this.imgPixels = imgPixels;
